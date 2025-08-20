@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMUTrak — Patients List (API)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <h2>EMUTrak — Patients (API)</h2>
+      <div class="inline">
+        <input id="apiBase" placeholder="API base e.g. https://your-app.onrender.com" style="min-width:320px" />
+        <button class="btn" id="saveApi">Save API</button>
+        <button class="btn" id="authBtn">Sign in</button>
+        <span id="who" class="muted"></span>
+      </div>
+    </header>
+
+    <section class="card">
+      <h3>Capture Patient</h3>
+      <form id="patientForm" class="form-grid">
+        <div class="col-6"><label>Name</label><input id="name" required /></div>
+        <div class="col-6"><label>Diagnosis</label><input id="diagnosis" required /></div>
+        <div class="col-6"><label>Discipline</label>
+          <select id="discipline" required>
+            <option value="">Select…</option>
+            <option>Neurosurgery</option><option>Trauma</option><option>Gynaecology</option>
+            <option>Orthopaedics</option><option>General Surgery</option><option>Internal Medicine</option>
+            <option>Emergency</option><option>Neurology</option><option>Nephrology</option><option>Vascular</option>
+            <option>Cardiology</option><option>Urology</option><option>ENT / MaxFax / Ophthal</option><option>Other</option>
+          </select>
+        </div>
+        <div class="col-6"><label>Doctor</label><input id="doctor" /></div>
+        <div class="col-6"><label>Admitted?</label><select id="admitted"><option>Yes</option><option>No</option></select></div>
+        <div class="col-6"><label>Admission Date</label><input id="admissionDate" type="date" /></div>
+        <div class="col-6"><label>Day (auto)</label><input id="day" type="number" readonly /></div>
+        <div class="col-6"><label>Sticker</label><input id="sticker" /></div>
+        <div class="col-12"><label>Remarks</label><textarea id="remarks"></textarea></div>
+        <div class="toolbar">
+          <button class="btn" type="submit" id="createBtn">Capture</button>
+          <button class="btn" type="button" id="updateBtn" disabled>Update</button>
+          <button class="btn" type="button" id="clearBtn">Clear</button>
+          <span id="status" class="muted"></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="table-head">
+        <h3>Records</h3>
+        <div class="inline">
+          <input id="search" placeholder="Search…" />
+          <button class="btn" id="refreshBtn">Refresh</button>
+          <button class="btn" id="exportCsv">Export CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="table">
+          <thead><tr>
+            <th>#</th><th>Name</th><th>Diagnosis</th><th>Discipline</th><th>Doctor</th>
+            <th>Admitted</th><th>Admission</th><th>Day</th><th>Sticker</th><th>Remarks</th><th>Last edited</th><th>Actions</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <dialog id="authDialog">
+    <div class="card">
+      <h3>Sign in</h3>
+      <div class="grid-two">
+        <div>
+          <label>Username</label><input id="u" />
+          <label>Password</label><input id="p" type="password" />
+          <label>Role (enforced server-side)</label>
+          <select id="role"><option>viewer</option><option>editor</option><option>admin</option></select>
+          <div class="toolbar"><button class="btn" id="doAuth">Sign in</button><button class="btn" id="closeAuth">Close</button></div>
+        </div>
+        <p class="muted">Tip: Create a superuser on the backend to be <b>admin</b>. Staff users are <b>editor</b>. Normal users are <b>viewer</b>. The token includes your role.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./style.js"></script>
+</body>
+</html>

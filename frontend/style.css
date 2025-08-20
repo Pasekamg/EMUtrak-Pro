@@ -1,0 +1,21 @@
+/* reuse styles from earlier */ 
+:root{--bg:#0b1222; --card:#0f172a; --muted:#94a3b8; --text:#e5e7eb;}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(120deg,#0b1222,#101827 60%,#0b1222);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial}
+.wrap{max-width:1100px;margin:24px auto;padding:16px}
+.topbar{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;margin:10px 0}
+.inline{display:flex;gap:8px;align-items:center}
+.form-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+.col-6{grid-column:span 6}.col-12{grid-column:span 12}
+label{font-size:12px;color:var(--muted);display:block;margin:8px 0 6px}
+input,select,textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#0b1222;color:var(--text);outline:none}
+textarea{min-height:74px;resize:vertical}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.btn{border:1px solid rgba(255,255,255,.18);padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.06);color:var(--text);cursor:pointer}
+.btn:hover{border-color:rgba(255,255,255,.3)}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:10px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left;font-size:14px}
+.table-wrap{overflow:auto}
+.muted{color:var(--muted)}
+.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:860px){.form-grid{grid-template-columns:1fr}.col-6{grid-column:span 1}.grid-two{grid-template-columns:1fr}}
